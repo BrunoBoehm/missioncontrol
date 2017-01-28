@@ -1,0 +1,38 @@
+<%= form_for(@pin) do |f| %>
+
+	<% if @pin.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+	      <ul>
+	      <% @pin.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	<% end %>
+
+	<div class="input-group">
+	    <%= f.label :title, class: "input-group-addon" %>
+	    <%= f.text_field :title, class: "form-control", placeholder: "What is this Pin about?" %>
+	</div>
+
+	<div class="input-group">
+	    <%= f.label :url, class: "input-group-addon" %>
+	    <%= f.text_field :url, class: "form-control", placeholder: "What's the URL you'd like to pin" %>
+	</div>
+
+	<div class="input-group">
+	    <%= f.label :imgs, class: "input-group-addon" %>
+	    <%= f.text_field :imgs, class: "form-control", placeholder: "What's the URL you'd like to pin" %>
+	</div>	
+
+	<div class="input-group">
+	    <%= f.label :notes, class: "input-group-addon" %>
+	    <%= f.text_area :notes, class: "form-control editor", placeholder: "What's the URL you'd like to pin", rows: "10" %>
+	</div>	
+
+	<div class="actions">
+	    <%= f.submit "Save Pin", class: "btn btn-success" %>
+	</div>
+
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_for(@board) do |f| %>
+
+	<% if @board.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@board.errors.count, "error") %> prohibited this board from being saved:</h2>
+	      <ul>
+	      <% @board.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	<% end %>
+
+	<div class="input-group">
+	    <%= f.label :title, class: "input-group-addon" %>
+	    <%= f.text_field :title, class: "form-control", placeholder: "What is this Board's title?" %>
+	</div>
+
+	<div class="input-group">
+	    <%= f.label :description, class: "input-group-addon" %>
+	    <%= f.text_area :description, class: "form-control", placeholder: "What this board about?", rows: "3" %>
+	</div>
+
+	<div class="input-group">
+	    <%= f.label :img, class: "input-group-addon" %>
+	    <%= f.text_field :img, class: "form-control", placeholder: "What's the URL for this board's main image?" %>
+	</div>	
+
+	<div class="input-group">
+	    <%= f.label :color, class: "input-group-addon" %>
+	    <%= f.text_field :color, class: "form-control", placeholder: "#ffffff"%>
+	</div>	
+
+	<div class="actions">
+	    <%= f.submit "Save Pin", class: "btn btn-success" %>
+	</div>
+
+<% end %>
