@@ -19,7 +19,7 @@
 	<nav aria-label="...">
 		<ul class="pager">
 			<% @pin.tags.each do |tag| %>
-				<li><%= link_to "##{tag.name}", tag %></li>
+				<li><%= link_to "##{tag.name}", tag_pins_path(tag) %></li>
 			<% end %>
 		</ul>
 	</nav>	
