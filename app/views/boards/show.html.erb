@@ -5,4 +5,4 @@
 
 <%= render partial: "pins/pins", locals: {pins: @board.pins} %>
 
-<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-success" %> or <%= link_to "Create a Pin", new_pin_path, class: "btn btn-success" %>
+<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-success" %> or <%= link_to "Create a Pin", new_board_pin_path(@board), class: "btn btn-success" %>
