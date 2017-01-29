@@ -4,13 +4,21 @@
 	</div>
 
 	<div class="panel-body">
-		<%= image_tag @pin.imgs %>
 		<%= @pin.notes.html_safe %>
+		<div class="row">
+			<% images(@pin).each do |img| %>
+				<div class="col-xs-12 col-md-4">
+					<%= link_to img, class: "thumbnail" do %>
+					  <%= image_tag img %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 
 	<div class="panel-footer">
 		<% @pin.boards.each do |board| %>
-			<span class="label label-info"><%= board.title %></span>
+			<span class="label label-info"><%= link_to board.title, board %></span>
 		<% end %>
 	</div>
 </div>
