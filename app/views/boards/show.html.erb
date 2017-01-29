@@ -1,4 +1,6 @@
-<h1><%= @board.title %></h1>
-<%= image_tag @board.imgs %>
-<p><%= @board.url %></p>
-<p><%= @board.notes %></p>
+<div class="jumbotron jumbotron-image" style="background-image: url(<%= @board.img %>);">
+  <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true" style="color: <%= @board.color %>;"></span> <%= @board.title %></h1>
+  <p><%= @board.description %></p>
+</div>
+
+<%= link_to "Edit Board", edit_board_path(@board) %> | <%= link_to "Create a Pin", new_pin_path %>

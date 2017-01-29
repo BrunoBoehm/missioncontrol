@@ -31,3 +31,27 @@ thead {
 
 /*now it begins*/
 
+.board-icon {
+	height: 100px;
+	width: 100px;
+	object-fit: cover;
+}
+
+
+.jumbotron-image {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.2);
+
+
+	h1, p {
+		color: white;
+		text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+	}
+
+}
