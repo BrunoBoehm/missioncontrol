@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-	before_action :set_pin, only: [:show]
+	before_action :set_pin, only: [:show, :edit, :update]
 
 	def index
 		@pins = Pin.all
@@ -20,6 +20,18 @@ class PinsController < ApplicationController
 
 	def show
 		
+	end
+
+	def edit
+		
+	end
+
+	def update
+		if @pin.update(pin_params)
+			redirect_to @pin
+		else
+			render :edit
+		end
 	end
 
 	private

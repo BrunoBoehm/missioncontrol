@@ -3,4 +3,4 @@
   <p><%= @board.description %></p>
 </div>
 
-<%= link_to "Edit Board", edit_board_path(@board) %> | <%= link_to "Create a Pin", new_pin_path %>
+<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-success" %> or <%= link_to "Create a Pin", new_pin_path, class: "btn btn-success" %>
