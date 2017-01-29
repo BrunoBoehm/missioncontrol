@@ -33,8 +33,20 @@
 
 	<p>Feature this pin in board(s):</p>      
     <div class="row">
-	    <%= f.collection_check_boxes :board_ids, Board.order(:title), :id, :title, include_blank: "No board selected" do |c| %>
+	    <%= f.collection_check_boxes :board_ids, Board.order(:title), :id, :title do |c| %>
 		    <div class="col-lg-4">
+		    	<div class="input-group">
+			    	<span class="input-group-addon"><%= c.check_box %></span>
+					<%= c.label(class: "form-control") %>
+				</div>	
+			</div>
+	    <% end %>
+	</div>	
+
+	<p>Add Tags to this Pin:</p>      
+    <div class="row">
+	    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |c| %>
+		    <div class="col-lg-2">
 		    	<div class="input-group">
 			    	<span class="input-group-addon"><%= c.check_box %></span>
 					<%= c.label(class: "form-control") %>

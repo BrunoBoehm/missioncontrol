@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :social_profiles
   resources :companies
   resources :pins
+  resources :tags
   resources :boards do
     resources :pins, only: [:new]
   end
