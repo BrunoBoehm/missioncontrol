@@ -55,3 +55,21 @@ thead {
 	}
 
 }
+
+.blurb {
+	border: 1px solid #eaeaea;
+    box-shadow: 2px 2px 7px #dcdcdc;
+    margin: 30px 0;
+    min-height: 340px;
+}
+
+
+.img-blurb {
+	height: 200px;
+	max-width: 100%;
+	object-fit: cover;
+}
+
+img[class] { 
+  width: 100%;
+}
