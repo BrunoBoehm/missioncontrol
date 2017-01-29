@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-	before_action :set_pin, only: [:show, :edit, :update]
+	before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@pins = Pin.all
@@ -36,6 +36,11 @@ class PinsController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@pin.destroy
+		redirect_to pins_path, notice: "As the French put it: 1 lost, 10 found."
 	end
 
 	private
