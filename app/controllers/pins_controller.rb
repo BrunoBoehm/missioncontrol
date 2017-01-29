@@ -40,6 +40,6 @@ class PinsController < ApplicationController
 		end
 
 		def pin_params
-			params.require(:pin).permit(:title, :url, :notes, :imgs)
+			params.require(:pin).permit(:title, :url, :notes, :imgs, board_ids: [])
 		end
 end

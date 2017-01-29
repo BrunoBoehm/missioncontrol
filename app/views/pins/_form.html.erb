@@ -14,7 +14,7 @@
 	<div class="input-group">
 	    <%= f.label :title, class: "input-group-addon" %>
 	    <%= f.text_field :title, class: "form-control", placeholder: "What is this Pin about?" %>
-	</div>
+	</div>	
 
 	<div class="input-group">
 	    <%= f.label :url, class: "input-group-addon" %>
@@ -29,6 +29,18 @@
 	<div class="input-group">
 	    <%= f.label :notes, class: "input-group-addon" %>
 	    <%= f.text_area :notes, class: "form-control editor", placeholder: "What's the URL you'd like to pin", rows: "10" %>
+	</div>	
+
+	<p>Feature this pin in board(s):</p>      
+    <div class="row">
+	    <%= f.collection_check_boxes :board_ids, Board.order(:title), :id, :title, include_blank: "No board selected" do |c| %>
+		    <div class="col-lg-4">
+		    	<div class="input-group">
+			    	<span class="input-group-addon"><%= c.check_box %></span>
+					<%= c.label(class: "form-control") %>
+				</div>	
+			</div>
+	    <% end %>
 	</div>	
 
 	<div class="actions">

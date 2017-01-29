@@ -1,6 +1,19 @@
-<h1><%= @pin.title %></h1>
-<%= image_tag @pin.imgs %>
-<p><%= link_to @pin.url %></p>
-<p><%= @pin.notes.html_safe %></p>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2 class="panel-title"><%= @pin.title %><span class="pull-right"><%= link_to @pin.url %></span></h2>
+	</div>
+
+	<div class="panel-body">
+		<%= image_tag @pin.imgs %>
+		<%= @pin.notes.html_safe %>
+	</div>
+
+	<div class="panel-footer">
+		<% @pin.boards.each do |board| %>
+			<span class="label label-info"><%= board.title %></span>
+		<% end %>
+	</div>
+</div>
+
 
 <%= link_to "Edit Pin", edit_pin_path(@pin), class: "btn btn-success" %>
