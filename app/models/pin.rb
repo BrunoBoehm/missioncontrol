@@ -10,4 +10,6 @@ class Pin < ActiveRecord::Base
 	
 	has_many :pro_links
 	has_many :companies, through: :pro_links
+
+	accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes['name'].blank? }
 end

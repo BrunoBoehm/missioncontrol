@@ -31,7 +31,7 @@
 	    <%= f.text_area :notes, class: "form-control editor", placeholder: "What's the URL you'd like to pin", rows: "10" %>
 	</div>	
 
-	<p>Feature this pin in board(s):</p>      
+	<h4>Pin to board(s)</h4>       
     <div class="row">
 	    <%= f.collection_check_boxes :board_ids, Board.order(:title), :id, :title do |c| %>
 		    <div class="col-lg-4">
@@ -43,7 +43,7 @@
 	    <% end %>
 	</div>	
 
-	<p>Add Tags to this Pin:</p>      
+	<h4>Add Tag(s)</h4>    
     <div class="row">
 	    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |c| %>
 		    <div class="col-lg-2">
@@ -53,6 +53,16 @@
 				</div>	
 			</div>
 	    <% end %>
+	    <%= f.fields_for :tags, @pin.tags.build do |tag| %>
+	    	<div class="col-lg-4">
+		    	<div class="input-group">
+		    		<%= tag.text_field :name, class: "form-control", placeholder: "Create a new tag?" %>
+<!-- 			    	<span class="input-group-btn">
+			    		<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Tag!</button>
+			    	</span> -->
+				</div>	
+			</div>
+		<% end %>
 	</div>	
 
 	<div class="actions">
