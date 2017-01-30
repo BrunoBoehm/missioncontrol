@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
 	before_action :set_board, only: [:show, :edit, :update]
+	# skip_before_action :authenticate_user!, only: [:index]
+	# http://stackoverflow.com/questions/36302866/how-do-i-make-a-before-action-to-run-on-all-controllers-and-actions-except-one
 
 	def index
 		@boards = Board.all
