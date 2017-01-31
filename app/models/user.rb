@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name, :surname    
   belongs_to :account   
+
 end
