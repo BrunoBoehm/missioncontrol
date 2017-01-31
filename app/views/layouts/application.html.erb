@@ -11,14 +11,13 @@
 <%= render "shared/menu" %>
 
 <div class="container">
-	
-    <% flash.each do |name, msg| %>
-	    <div class="alert alert-info" role="alert">
-	      <%= content_tag :div, msg %>
-	    </div>
-    <% end %>
+	<div class="alert alert-info" role="alert">
+		<p>Current user: <%= current_user.name %> | Account_id: <%= current_user.account_id %></p>
+	    <% flash.each do |name, msg| %>
+		      <%= content_tag :div, msg %>
+	    <% end %>
+    </div>
 </div>
-
 
 
 <%= yield %>

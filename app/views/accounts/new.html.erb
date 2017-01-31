@@ -1,6 +1,39 @@
-<p>Well done <%= current_user.name + " " + current_user.surname %> (<%= current_user.email %>)</p>
-<h1>Start by setting your Account</h1>
-<p>Create an account to be able to invite other users into your space.</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-6 col-md-offset-3">
+			<div class="well">
+				<h2>Step 1. Start by setting your Account</h2>
+				<p>Create an account to be able to invite other users into your space.</p>
 
-<p>Hidden nested field for current user_id</p>
-<p>Fields to send invitations and add unregistered users</p>
+				<%= form_for @account do |f| %>
+					<div class="input-group">
+						<%= f.label :name, class: "input-group-addon" %>
+						<%= f.text_field :name, placeholder: "What is the name of your organization?", class: "form-control" %>
+					</div>
+					<div class="input-group">
+						<%= f.label :logo, class: "input-group-addon" %>
+						<%= f.text_field :logo, placeholder: "A link to your logo", class: "form-control" %>
+					</div>		
+					<div class="input-group">
+						<%= f.label :description, class: "input-group-addon" %>
+						<%= f.text_area :description, placeholder: "A short welcome message for your users", class: "form-control", rows: "4" %>
+					</div>
+					<div class="actions">
+						<%= f.submit "Create Account", class: "btn btn-success" %>
+					</div>										
+				<% end %>
+			</div>
+		</div>	
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-md-6 col-md-offset-3">
+			<div class="well">
+				<h2>Step 2. Do you want to invite a few members of your organization?</h2>
+				<p>As soon as other users join your account, they will be able to create and participate to boards that belong to your company account, privately.</p>
+				<p>Maybe can be done as a nested field form above, emails separated by commas...?</p>
+				<button class="btn btn-success">Invite folks</button>
+			</div>
+		</div>
+	</div>
+</div>

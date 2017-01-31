@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
 	# http://stackoverflow.com/questions/36302866/how-do-i-make-a-before-action-to-run-on-all-controllers-and-actions-except-one
 
 	def index
-		@boards = Board.all
+		@boards = Board.where(account_id: current_account.id)
 	end
 
 	def new
