@@ -15,6 +15,10 @@ class AccountsController < ApplicationController
 		end
 	end
 
+	def show
+		@account = current_account
+	end
+
 	private
 		def account_params
 			params.require(:account).permit(:name, :logo, :description)

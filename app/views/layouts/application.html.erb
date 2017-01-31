@@ -12,7 +12,7 @@
 
 <div class="container">
 	<div class="alert alert-info" role="alert">
-		<p>Current user: <%= current_user.name %> | Account_id: <%= current_user.account_id %></p>
+		<p>Current user: <%= current_user.name %> | Account_id: <%= current_user.account_id %> | Account Name: <%= current_account.name %></p>
 	    <% flash.each do |name, msg| %>
 		      <%= content_tag :div, msg %>
 	    <% end %>
