@@ -11,7 +11,8 @@
 		<tr>
 			<th>#</th>
 			<th>Tag Name</th>
-			<th>Pins tagged</th>
+			<th>Tagged elements</th>
+			<th>Tagged Pins</th>
 			<th>Admin</th>
 		</tr>
 	</thead>
@@ -20,6 +21,7 @@
 		<tr>
 			<td>#<%= tag.id %></td>
 			<td><%= tag.name %></td>
+			<td><%= tag.taggings.count %></td>
 			<td><%= tag.pins.count %></td>
 			<td><%= link_to "Edit", edit_tag_path(tag) %> | <%= link_to "Delete", tag, method: :delete, data: {confirm: "Are you sure?"} %></td>
 		</tr>
