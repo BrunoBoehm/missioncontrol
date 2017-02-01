@@ -95,3 +95,23 @@ img[class] {
 .btn-success a:visited {
 	color: white;
 }
+
+.btn-action {
+    color: #fff;
+    background-color: #fa5d56;
+    border-color: #e9564f;
+}
+
+a {
+  color: #fa5d56;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;	
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
