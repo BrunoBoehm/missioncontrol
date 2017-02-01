@@ -43,27 +43,7 @@
 	    <% end %>
 	</div>	
 
-	<h4>Add Tag(s)</h4>    
-    <div class="row">
-	    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |c| %>
-		    <div class="col-lg-2">
-		    	<div class="input-group">
-			    	<span class="input-group-addon"><%= c.check_box %></span>
-					<%= c.label(class: "form-control") %>
-				</div>	
-			</div>
-	    <% end %>
-	    <%= f.fields_for :tags, @pin.tags.build do |tag| %>
-	    	<div class="col-lg-4">
-		    	<div class="input-group">
-		    		<%= tag.text_field :name, class: "form-control", placeholder: "Create a new tag?" %>
-<!-- 			    	<span class="input-group-btn">
-			    		<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Tag!</button>
-			    	</span> -->
-				</div>	
-			</div>
-		<% end %>
-	</div>	
+	<%= render partial: 'shared/add_tags', locals: {f: f, pin: @pin} %>
 
 	<div class="actions">
 	    <%= f.submit "Save Pin", class: "btn btn-success" %>

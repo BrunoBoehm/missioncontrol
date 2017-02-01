@@ -4,7 +4,8 @@ class PinsController < ApplicationController
 	def index
 		if params[:tag_id]
 			tag = Tag.find(params[:tag_id])
-			@pins = tag.pins
+			binding.pry
+			@pins = tag.taggable
 		else
 			@pins = Pin.all
 		end
