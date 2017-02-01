@@ -1,6 +1,5 @@
 class Tag < ActiveRecord::Base
-	has_many :pin_tags
-	has_many :pins, through: :pin_tags
+	belongs_to :taggable, polymorphic: true
 	
 	default_scope { where(account_id: Account.current_id) }
 end
