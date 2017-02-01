@@ -1,0 +1,17 @@
+<%= form_for account do |f| %>
+	<div class="input-group">
+		<%= f.label :name, class: "input-group-addon" %>
+		<%= f.text_field :name, placeholder: "What is the name of your organization?", class: "form-control" %>
+	</div>
+	<div class="input-group">
+		<%= f.label :logo, class: "input-group-addon" %>
+		<%= f.text_field :logo, placeholder: "A link to your logo", class: "form-control" %>
+	</div>		
+	<div class="input-group">
+		<%= f.label :description, class: "input-group-addon" %>
+		<%= f.text_area :description, placeholder: "A short welcome message for your users", class: "form-control", rows: "4" %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Save Account", class: "btn btn-success" %>
+	</div>										
+<% end %>

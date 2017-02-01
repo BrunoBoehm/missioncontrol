@@ -15,6 +15,19 @@ class AccountsController < ApplicationController
 		end
 	end
 
+	def edit
+		@account = current_account
+	end
+
+	def update
+		account = Account.find(current_account.id)
+		if account.update(account_params)
+			redirect_to account, notice: "Account updated!"
+		else
+			render :edit
+		end	
+	end
+
 	def show
 		@account = current_account
 	end
