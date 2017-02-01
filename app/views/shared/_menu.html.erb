@@ -24,7 +24,7 @@
       
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="<%= account_path(current_account) %>"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> <%= current_account.name %>'s Account</a></li>
                 <li><a href="<%= edit_user_registration_path %>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.name %>'s Account</a></li>

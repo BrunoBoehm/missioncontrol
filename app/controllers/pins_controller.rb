@@ -2,10 +2,9 @@ class PinsController < ApplicationController
 	before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
 	def index
-		if params[:tag_id]
+		if params[:tag]
 			tag = Tag.find(params[:tag_id])
-			binding.pry
-			@pins = tag.taggable
+			@pins = tag.pins
 		else
 			@pins = Pin.all
 		end
