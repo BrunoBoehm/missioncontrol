@@ -2,7 +2,11 @@
   <% pins.order(:id).each do |pin| %>
     <div class="col-md-3">
         <div class="blurb">
-          <%= link_to image_tag( images(pin).first, class: "img-blurb" ), pin %>
+          <% if is_video?(pin.url) %>
+              <%= link_to image_tag( youtube_thumbnail(pin.url), class: "img-blurb" ), pin %>
+          <% else %>
+              <%= link_to image_tag( images(pin).first, class: "img-blurb" ), pin %>
+          <% end %>
           <h4><%= link_to (truncate pin.title), pin %></h4>
 
           <h5>

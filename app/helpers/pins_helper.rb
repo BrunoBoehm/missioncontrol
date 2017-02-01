@@ -16,4 +16,8 @@ module PinsHelper
 		url.split("?v=").last
 	end
 
+	def youtube_thumbnail(url)
+		"https://i.ytimg.com/vi/#{video_from_url(url)}/maxresdefault.jpg"
+	end
+
 end
