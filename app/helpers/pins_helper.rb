@@ -20,4 +20,5 @@ module PinsHelper
 		"https://i.ytimg.com/vi/#{video_from_url(url)}/maxresdefault.jpg"
 	end
 
+
 end

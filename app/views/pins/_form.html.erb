@@ -31,19 +31,47 @@
 	    <%= f.text_area :notes, class: "form-control editor", placeholder: "What's the URL you'd like to pin", rows: "10" %>
 	</div>	
 
-	<h4>Pin to board(s)</h4>       
-    <div class="row">
-	    <%= f.collection_check_boxes :board_ids, Board.order(:title), :id, :title do |c| %>
-		    <div class="col-lg-4">
-		    	<div class="input-group">
-			    	<span class="input-group-addon"><%= c.check_box %></span>
-					<%= c.label(class: "form-control") %>
-				</div>	
-			</div>
-	    <% end %>
-	</div>	
+	<div class="well">
+		<h4>Pin to board(s)</h4>       
+	    <div class="row">
+		    <%= f.collection_check_boxes :board_ids, Board.order(:title), :id, :title do |c| %>
+			    <div class="col-lg-4">
+			    	<div class="input-group">
+				    	<span class="input-group-addon"><%= c.check_box %></span>
+						<%= c.label(class: "form-control") %>
+					</div>	
+				</div>
+		    <% end %>
+		</div>	
 
-	<%= render partial: 'shared/add_tags', locals: {f: f, pin: @pin} %>
+		<%= render partial: 'shared/add_tags', locals: {f: f, pin: @pin} %>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Add a related Company to this Pin</h4>
+				<%= f.fields_for :companies, @pin.companies.build do |ff| %>
+					<div class="input-group">
+						<%= ff.label :name, "Company Name", class: "input-group-addon" %>
+						<%= ff.text_field :name, class: "form-control" %>
+					</div>		
+				<% end %>	
+			</div>	
+
+			<div class="col-md-6">
+				<h4>Add a related Person to this Pin</h4>
+				<%= f.fields_for :people, @pin.people.build do |ff| %>
+					<div class="input-group">
+						<%= ff.label :name, class: "input-group-addon" %>
+						<%= ff.text_field :name, class: "form-control" %>
+					</div>		
+					<div class="input-group">	
+						<%= ff.label :surname, class: "input-group-addon" %>
+						<%= ff.text_field :surname, class: "form-control" %>
+					</div>	
+				<% end %>	
+			</div>
+		</div>
+	</div>
 
 	<div class="actions">
 	    <%= f.submit "Save Pin", class: "btn btn-success" %>

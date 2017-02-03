@@ -1,7 +1,7 @@
 <div class="container">
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h2 class="panel-title"><%= @pin.title %><span class="pull-right"><%= link_to @pin.url %></span></h2>
+		<h2 class="panel-title"><%= @pin.title %><span class="pull-right"><%= link_to "Link", @pin.url %></span></h2>
 	</div>
 
 	<div class="panel-body">
@@ -20,11 +20,24 @@
 		<% end %>
 	</div>	
 
-		<% if is_video?(@pin.url) %>
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/w2H07DRv2_M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-			</div>
-		<% end %>
+	<% if is_video?(@pin.url) %>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/w2H07DRv2_M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+		</div>
+	<% end %>
+
+	<ul class="list-group">
+		<li class="list-group-item"><strong>Linked Companies: </strong> 
+			<% @pin.companies.each_with_index do |company, index| %>
+				<%= link_to company.name, company %><%= (index + 2 > @pin.companies.length ) ? "" : ", " %>
+			<% end %> 
+		</li>
+		<li class="list-group-item"><strong>Linked People: </strong>
+			<% @pin.people.each_with_index do |person, index| %>
+				<%= link_to "#{person.name} #{person.surname}", person %><%= (index + 2 > @pin.people.length ) ? "" : ", " %>
+			<% end %> 
+		</li>
+	</ul>	
 
 	<nav aria-label="...">
 		<ul class="pager">
