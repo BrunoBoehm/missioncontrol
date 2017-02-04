@@ -1,5 +1,7 @@
 class Company < ActiveRecord::Base
-	has_many :pro_links, dependent: :destroy
+	has_many :pro_links, dependent: :delete_all
+	# http://stackoverflow.com/questions/28581756/dependent-destroy-not-working
+	# dependent destroy ≠ delete_all
 	has_many :pins, through: :pro_links
 	has_many :staffings
 	has_many :people, through: :staffings

@@ -1,0 +1,28 @@
+<div class="container">
+	<h2>All Pro Links</h2>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Company Name</th>
+				<th>company_id</th>
+				<th>pin_id</th>
+				<th>Pin Name</th>
+				<th>Admin</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @pro_links.each do |pro_link| %>
+				<tr>
+					<td><%= pro_link.id %></td>
+					<td><%= pro_link.company.try(:name) %></td>
+					<td><%= pro_link.company_id %></td>
+					<td><%= pro_link.pin_id %></td>
+					<td><%= pro_link.pin.try(:title) %></td>
+					<td>TBD</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

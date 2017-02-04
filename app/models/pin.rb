@@ -8,7 +8,9 @@ class Pin < ActiveRecord::Base
 	has_many :pro_links
 	has_many :companies, through: :pro_links
 
-	has_many :taggings, as: :taggable, dependent: :destroy
+	has_many :taggings, as: :taggable, dependent: :delete_all
+	# delete_all / destroy here better since there is no destroy method in the taggings controller
+	# http://stackoverflow.com/questions/28581756/dependent-destroy-not-working
 	has_many :tags, through: :taggings
 
 	accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes['name'].blank? }
