@@ -21,9 +21,12 @@
 $(document).ready(function() {
 
 	$('form').on('click', '.remove_field', function(e) {
-		$(this).prev("input[type=hidden]").val('1');
-		$(this).closest('fieldset').hide();
-		e.preventDefault();
+		if (confirm("Are you sure?")) {
+			$(this).prev("input[type=hidden]").val('1');
+			$(this).closest('fieldset').hide();
+			e.preventDefault();
+		}
+		return false;
 	});
 
 
