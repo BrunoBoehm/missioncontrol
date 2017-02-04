@@ -5,7 +5,7 @@ class Pin < ActiveRecord::Base
 	has_many :perso_links
 	has_many :people, through: :perso_links
 	
-	has_many :pro_links
+	has_many :pro_links, dependent: :delete_all
 	has_many :companies, through: :pro_links
 
 	has_many :taggings, as: :taggable, dependent: :delete_all
