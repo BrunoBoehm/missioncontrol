@@ -29,7 +29,7 @@
 	<ul class="list-group">
 		<li class="list-group-item"><strong>Linked Companies: </strong> 
 			<% @pin.companies.each_with_index do |company, index| %>
-				<%= link_to company.name, company %><%= (index + 2 > @pin.companies.length ) ? "" : ", " %>
+				<%= link_to company.name, company %><%= (index + 3 > @pin.companies.length ) ? "" : ", " %>
 			<% end %> 
 		</li>
 		<li class="list-group-item"><strong>Linked People: </strong>

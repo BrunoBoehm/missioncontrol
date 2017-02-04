@@ -16,11 +16,16 @@ class PinsController < ApplicationController
 		else
 			@pin = Pin.new	
 		end
+		3.times do
+			company = @pin.companies.build
+		end
 	end
 
 	def create
 		@pin = Pin.new(pin_params)
 		if @pin.save
+			@pro_link.save unless @pro_link.nil?
+			@perso_link.save unless @perso_link.nil?
 			redirect_to @pin, notice: "Pin successfully saved, congrats"
 		else
 			render :new
@@ -54,6 +59,6 @@ class PinsController < ApplicationController
 		end
 
 		def pin_params
-			params.require(:pin).permit(:title, :url, :notes, :imgs, board_ids: [], tag_ids: [], tags_attributes: [:name], companies_attributes: [:name], people_attributes: [:name, :surname])
+			params.require(:pin).permit(:title, :url, :notes, :imgs, board_ids: [], tag_ids: [], tags_attributes: [:name], companies_attributes: [:name, :id, :_destroy], people_attributes: [:name, :surname])
 		end
 end
