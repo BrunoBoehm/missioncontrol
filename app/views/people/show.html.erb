@@ -1,9 +1,12 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			<%= image_tag(@person.img, class: "thumbnail") %>
+	<% if !@person.img.nil? %>
+		<div class="row">
+			<div class="col-md-3">
+				<%= image_tag(@person.img, class: "thumbnail") %>
+			</div>
 		</div>
-	</div>
+	<% end %>
+
 	<h2><%= @person.name + " " + @person.surname %></h2>
 	<p>Tags: <%= @person.tags.map(&:name).to_sentence %></p>
 	<p><%= @person.name + " " + @person.surname %> is linked to:</p>

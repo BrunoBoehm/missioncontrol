@@ -58,19 +58,10 @@
 
 			<div class="col-md-6 fields_list">
 				<h4>Link a Person to this Pin</h4>
-				<%= f.fields_for :people, @pin.people.build do |ff| %>
-					<fieldset>
-						<div class="input-group">
-							<%= ff.label :name, class: "input-group-addon" %>
-							<%= ff.text_field :name, class: "form-control" %>
-						</div>		
-						<div class="input-group">	
-							<%= ff.label :surname, class: "input-group-addon" %>
-							<%= ff.text_field :surname, class: "form-control" %>
-						</div>	
-					</fieldset>	
+				<%= f.fields_for :people do |ff| %>
+					<%= render partial: "add_person", locals: {f: ff} %>
 				<% end %>
-				<p><a href="#" id="action_add_company">Add person</a></p>	
+				<p><%= link_to_add_fields "Add Person", f, :people %></p>	
 			</div>
 		</div>
 	</div>

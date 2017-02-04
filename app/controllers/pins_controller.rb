@@ -17,7 +17,8 @@ class PinsController < ApplicationController
 			@pin = Pin.new	
 		end
 		3.times do
-			company = @pin.companies.build
+			@pin.companies.build
+			@pin.people.build
 		end
 	end
 
@@ -57,7 +58,7 @@ class PinsController < ApplicationController
 		end
 
 		def pin_params
-			params.require(:pin).permit(:title, :url, :notes, :imgs, { tag_ids: [] }, :tag_names, board_ids: [], companies_attributes: [:name, :id, :_destroy], people_attributes: [:name, :surname])
+			params.require(:pin).permit(:title, :url, :notes, :imgs, { tag_ids: [] }, :tag_names, board_ids: [], companies_attributes: [:name, :id, :_destroy], people_attributes: [:name, :surname, :id, :_destroy])
 			# make sure to have tag_ids called before tag_names otherwise tag names will be destroyed
 		end
 end

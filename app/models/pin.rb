@@ -10,7 +10,7 @@ class Pin < ActiveRecord::Base
 
 	include IsTaggable
 
-	accepts_nested_attributes_for :people, reject_if: proc { |attributes| attributes['name'].blank? && attributes['surname'].blank? }
+	accepts_nested_attributes_for :people, reject_if: proc { |attributes| attributes['name'].blank? && attributes['surname'].blank? }, allow_destroy: true
 
 	accepts_nested_attributes_for :companies, reject_if: proc { |attributes| attributes['name'].blank? }, allow_destroy: true
 
@@ -29,6 +29,18 @@ class Pin < ActiveRecord::Base
 		end
 	end
 
+	def people_attributes=(attributes)
+		attributes.each do |i, attribute|
+			if attribute[:_destroy] == "1"
+				self.perso_links.find_by(person_id: attribute[:id]).destroy
+			else
+				person_name = attribute["name"]
+				person_surname = attribute["surname"]
+				person = Person.where('lower(name) = ? AND lower(surname) = ?', person_name.downcase, person_surname.downcase).first_or_create(name: person_name, surname: person_surname) unless (person_name.empty? && person_surname.empty?)
+				self.people << person unless self.people.include?(person) || person.nil?
+			end
+		end
+	end
 
 	# def people_attributes=(attributes)
 	# 	attributes.each do |i, attribute|
