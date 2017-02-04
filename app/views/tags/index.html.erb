@@ -13,6 +13,8 @@
 			<th>Tag Name</th>
 			<th>Tagged elements</th>
 			<th>Tagged Pins</th>
+			<th>Tagged Companies</th>
+			<th>Tagged People</th>
 			<th>Admin</th>
 		</tr>
 	</thead>
@@ -20,9 +22,11 @@
 		<% @tags.each do |tag| %>
 		<tr>
 			<td>#<%= tag.id %></td>
-			<td><%= tag.name %></td>
-			<td><%= tag.taggings.count %></td>
-			<td><%= tag.pins.count %></td>
+			<td><%= link_to tag.name, tag %></td>
+			<td><span class="badge"><%= tag.taggings.count %></span></td>
+			<td><span class="badge"><%= tag.pins.count %></span> <span class="pull-right"><%= tag.pins.map(&:id).to_sentence %></span></td>
+			<td><span class="badge"><%= tag.companies.count %></span> <span class="pull-right"><%= tag.companies.map(&:id).to_sentence %></span></td>
+			<td><span class="badge"><%= tag.people.count %></span> <span class="pull-right"><%= tag.people.map(&:id).to_sentence %></span></td>
 			<td><%= link_to "Edit", edit_tag_path(tag) %> | <%= link_to "Delete", tag, method: :delete, data: {confirm: "Are you sure?"} %></td>
 		</tr>
 		<% end %>
