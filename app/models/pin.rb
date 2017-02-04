@@ -19,15 +19,18 @@ class Pin < ActiveRecord::Base
 
 	default_scope { where(account_id: Account.current_id) }
 
-	# "companies_attributes"=>{"0"=>{"name"=>"Apple"}}, "people_attributes"=>{"0"=>{"name"=>"Petit ", "surname"=>"Prince"}}
 
-	# def companies_attributes=(attributes)
-	# 	attributes.each do |i, attribute|
-	# 		company_name = attribute["name"]
-	# 		company = Company.where('lower(name) = ?', company_name.downcase).first_or_create(name: company_name)
-	# 		@pro_link = self.pro_links.find_or_initialize_by(company_id: company.id, pin_id: self.id)
-	# 	end
-	# end
+	def companies_attributes=(attributes)
+		attributes.each do |i, attribute|
+			if attribute[:_destroy] == "1"
+				self.pro_links.find_by(company_id: attribute[:id]).destroy
+			else
+				company_name = attribute["name"]
+				company = Company.where('lower(name) = ?', company_name.downcase).first_or_create(name: company_name) unless company_name.empty?
+				self.companies << company unless self.companies.include?(company) || company.nil?
+			end
+		end
+	end
 
 	# def people_attributes=(attributes)
 	# 	attributes.each do |i, attribute|

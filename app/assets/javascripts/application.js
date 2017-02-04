@@ -17,10 +17,11 @@
 //= require_tree .
 
 
-// Shorthand for $( document ).ready()
+
 $(document).ready(function() {
 
-	$('form').on('click', '.remove_field', function(e) {
+	// destroying a resource
+	$(document).on('click', '.remove_field', function(e) {
 		if (confirm("Are you sure?")) {
 			$(this).prev("input[type=hidden]").val('1');
 			$(this).closest('fieldset').hide();
@@ -29,6 +30,7 @@ $(document).ready(function() {
 		return false;
 	});
 
+	// adding a field for a new resource
 	$(document).on('click', '.add_fields', function(e){
 		// debugger;
 		var time = new Date().getTime();

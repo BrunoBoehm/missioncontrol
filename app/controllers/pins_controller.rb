@@ -24,8 +24,6 @@ class PinsController < ApplicationController
 	def create
 		@pin = Pin.new(pin_params)
 		if @pin.save
-			@pro_link.save unless @pro_link.nil?
-			@perso_link.save unless @perso_link.nil?
 			redirect_to @pin, notice: "Pin successfully saved, congrats"
 		else
 			render :new
