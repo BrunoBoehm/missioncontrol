@@ -1,9 +1,31 @@
 <div class="container">
-<h1>Companies</h1>
+	<h1>Companies</h1>
 
-<ul>
-	<% @companies.each do |company| %>
-		<li><%= company.name %></li>
-	<% end %>	
-</ul>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Name</th>
+				<th>Creation Year</th>
+				<th>Size</th>
+				<th>Linked Pins</th>
+				<th>Linked Pins ids</th>
+				<th>Admin</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @companies.each do |company| %>
+				<tr>
+					<td><%= company.id %></td>
+					<td><%= link_to company.name, company %></td>
+					<td><%= company.creation_date %></td>
+					<td><%= company.size %></td>
+					<td><%= company.pins.map(&:title).join(', ') %></td>
+					<td><%= company.pins.map(&:id).join(', ') %></td>
+					<td><%= link_to "Edit", edit_company_path(company) %> | <%= link_to "Destroy", company, method: :delete, data: {confirm: "Are you sure?"} %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
 </div>

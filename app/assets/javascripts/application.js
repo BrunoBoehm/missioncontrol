@@ -29,7 +29,6 @@ $(document).ready(function() {
 		return false;
 	});
 
-
 	$(document).on('click', '.add_fields', function(e){
 		// debugger;
 		var time = new Date().getTime();
