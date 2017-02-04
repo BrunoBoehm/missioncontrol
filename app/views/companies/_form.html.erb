@@ -18,6 +18,10 @@
 	<div class="input-group">
 		<%= f.label :creation_date, class: "input-group-addon" %>
 		<%= f.number_field :creation_date, class: "form-control" %>
+	</div>
+
+	<div class="well">
+		<%= render partial: 'shared/add_tags', locals: {f: f} %>
 	</div>						
 	<div class="actions">
 		<%= f.submit "Save Company", class: "btn btn-success" %>

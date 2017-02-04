@@ -8,8 +8,7 @@ class Pin < ActiveRecord::Base
 	has_many :pro_links, dependent: :delete_all
 	has_many :companies, through: :pro_links
 
-	has_many :taggings, as: :taggable
-	has_many :tags, through: :taggings
+	include IsTaggable
 
 	accepts_nested_attributes_for :people, reject_if: proc { |attributes| attributes['name'].blank? && attributes['surname'].blank? }
 
@@ -30,19 +29,6 @@ class Pin < ActiveRecord::Base
 		end
 	end
 
-	def tag_names=(names)
-		unless names.empty?
-			names.split(',').map(&:strip).map(&:titleize).each do |name|
-				tag = Tag.where('lower(name) = ?', name.downcase).first_or_create(name: name)
-				binding.pry
-				self.tags << tag unless self.tags.include?(tag) 
-			end
-		end
-	end
-
-	def tag_names
-		
-	end
 
 	# def people_attributes=(attributes)
 	# 	attributes.each do |i, attribute|

@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
 
 	def update
 		@company.update(company_params)
-		redirect_to companies_path, notice: "Edit Successful"
+		redirect_to @company, notice: "Edit Successful"
 	end
 
 	def destroy
@@ -28,6 +28,6 @@ class CompaniesController < ApplicationController
 		end
 
 		def company_params
-			params.require(:company).permit(:name, :pitch, :size, :address, :creation_date)
+			params.require(:company).permit(:name, :pitch, :size, :address, :creation_date, { tag_ids: [] }, :tag_names)
 		end
 end

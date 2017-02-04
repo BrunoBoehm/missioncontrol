@@ -1,7 +1,10 @@
 <div class="container">
 	<h2><%= @company.name %></h2>
+	<p>Tags: <%= @company.tag_names.to_sentence %></p>
 	<p>Url: </p>
 	<p>Created in <%= @company.creation_date %>, around <%= @company.size %> employees.</p>
 	<p><%= @company.pitch %></p>
 	<address><%= @company.address %></address>
+	<hr>
+	<p><%= link_to "Edit #{@company.name}", edit_company_path(@company), class: "btn btn-default" %> <%= link_to "Destroy", @company, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger pull-right" %></p>
 </div>

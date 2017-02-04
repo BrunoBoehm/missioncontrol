@@ -7,5 +7,8 @@ class Company < ActiveRecord::Base
 	has_many :people, through: :staffings
 	has_one :social_profile
 
+	include IsTaggable
+	# must add in strong params { tag_ids: [] }, :tag_names
+
 	default_scope { where(account_id: Account.current_id) }
 end
