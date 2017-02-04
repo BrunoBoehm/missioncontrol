@@ -32,6 +32,6 @@ class PeopleController < ApplicationController
 		end
 
 		def person_params
-			params.require(:person).permit(:name, :surname, :img)
+			params.require(:person).permit(:name, :surname, :img, { tag_ids: [] }, :tag_names)
 		end
 end

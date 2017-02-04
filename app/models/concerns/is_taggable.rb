@@ -10,7 +10,6 @@ module IsTaggable
 		unless names.empty?
 			names.split(',').map(&:strip).map(&:titleize).each do |name|
 				tag = Tag.where('lower(name) = ?', name.downcase).first_or_create(name: name)
-				binding.pry
 				self.tags << tag unless self.tags.include?(tag) 
 			end
 		end

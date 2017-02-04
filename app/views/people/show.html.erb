@@ -1,14 +1,18 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-3">
 			<%= image_tag(@person.img, class: "thumbnail") %>
 		</div>
 	</div>
 	<h2><%= @person.name + " " + @person.surname %></h2>
+	<p>Tags: <%= @person.tags.map(&:name).to_sentence %></p>
 	<p><%= @person.name + " " + @person.surname %> is linked to:</p>
 	<ul>
 		<% @person.pins.each do |pin| %>
 			<li><%= link_to pin.title, pin %></li>
 		<% end %>
 	</ul>
+	<hr>
+	<%= link_to "Edit", edit_person_path(@person), class: 'btn btn-default' %>
+	<%= link_to "Delete", @person, method: :delete, class: "btn btn-danger pull-right" %>
 </div>
