@@ -19,6 +19,14 @@
 
 // Shorthand for $( document ).ready()
 $(document).ready(function() {
+
+	$('form').on('click', '.remove_field', function(e) {
+		$(this).prev("input[type=hidden]").val('1');
+		$(this).closest('fieldset').hide();
+		e.preventDefault();
+	});
+
+
 	$(document).on('click', '.add_fields', function(e){
 		// debugger;
 		var time = new Date().getTime();

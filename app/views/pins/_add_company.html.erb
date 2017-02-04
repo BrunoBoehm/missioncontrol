@@ -3,12 +3,6 @@
 		<%= f.label :name, "Company Name", class: "input-group-addon" %>
 		<%= f.text_field :name, class: "form-control" %>
 	</div>
-	<div class="row">
-		<div class="col-lg-5">
-			<div class="input-group">	
-				<span class="input-group-addon"><%= f.check_box :_destroy %></span>
-				<%= f.label :_destroy, "Remove Company", class: "form-control" %>
-			</div>	
-		</div>
-	</div>		
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "Remove", '#', class: "remove_field" %>
 </fieldset>	
