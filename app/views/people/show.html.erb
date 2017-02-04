@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<%= image_tag(@person.img, class: "thumbnail") %>
+		</div>
+	</div>
+	<h2><%= @person.name + " " + @person.surname %></h2>
+	<p><%= @person.name + " " + @person.surname %> is linked to:</p>
+	<ul>
+		<% @person.pins.each do |pin| %>
+			<li><%= link_to pin.title, pin %></li>
+		<% end %>
+	</ul>
+</div>
