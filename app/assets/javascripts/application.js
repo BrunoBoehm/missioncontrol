@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+// Shorthand for $( document ).ready()
+$(document).ready(function() {
+	$(document).on('click', '.add_fields', function(e){
+		// debugger;
+		var time = new Date().getTime();
+		// the regexp we create will be a global match, will not stop after the first one it finds
+		var regexp = new RegExp($(this).data('id'), 'g')
+		$(this).before($(this).data('fields').replace(regexp, time));
+		e.preventDefault();
+	});
+});

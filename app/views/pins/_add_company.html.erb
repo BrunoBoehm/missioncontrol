@@ -3,9 +3,6 @@
 		<%= f.label :name, "Company Name", class: "input-group-addon" %>
 		<%= f.text_field :name, class: "form-control" %>
 	</div>
-	<%= f.fields_for :pro_links do |ff| %>
-		<%= render partial: 'add_pro_link', locals: {f: ff} %>
-	<% end %>
 	<div class="row">
 		<div class="col-lg-5">
 			<div class="input-group">	

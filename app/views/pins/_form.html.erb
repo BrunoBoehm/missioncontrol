@@ -47,28 +47,30 @@
 		<%= render partial: 'shared/add_tags', locals: {f: f, pin: @pin} %>
 
 		<div class="row">
-			<div class="col-md-6 companies">
+			<div class="col-md-6 fields_list">
 				<h4>Link a Company to this Pin</h4>
 				<%= f.fields_for :companies do |ff| %>
 					<%= render partial: 'add_company', locals: {f: ff} %>
 				<% end %>
 
-				<p><a href="#" id="action_add_company">Add Company (jQuery)</a></p>
+				<p><%= link_to_add_fields "Add Company", f, :companies %></p>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6 fields_list">
 				<h4>Link a Person to this Pin</h4>
 				<%= f.fields_for :people, @pin.people.build do |ff| %>
-					<div class="input-group">
-						<%= ff.label :name, class: "input-group-addon" %>
-						<%= ff.text_field :name, class: "form-control" %>
-					</div>		
-					<div class="input-group">	
-						<%= ff.label :surname, class: "input-group-addon" %>
-						<%= ff.text_field :surname, class: "form-control" %>
-					</div>	
+					<fieldset>
+						<div class="input-group">
+							<%= ff.label :name, class: "input-group-addon" %>
+							<%= ff.text_field :name, class: "form-control" %>
+						</div>		
+						<div class="input-group">	
+							<%= ff.label :surname, class: "input-group-addon" %>
+							<%= ff.text_field :surname, class: "form-control" %>
+						</div>	
+					</fieldset>	
 				<% end %>
-				<p><a href="#" id="action_add_company">Add person (jQuery - coming soon)</a></p>	
+				<p><a href="#" id="action_add_company">Add person</a></p>	
 			</div>
 		</div>
 	</div>
