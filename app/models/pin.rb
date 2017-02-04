@@ -8,12 +8,8 @@ class Pin < ActiveRecord::Base
 	has_many :pro_links, dependent: :delete_all
 	has_many :companies, through: :pro_links
 
-	has_many :taggings, as: :taggable, dependent: :delete_all
-	# delete_all / destroy here better since there is no destroy method in the taggings controller
-	# http://stackoverflow.com/questions/28581756/dependent-destroy-not-working
+	has_many :taggings, as: :taggable
 	has_many :tags, through: :taggings
-
-	accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes['name'].blank? }
 
 	accepts_nested_attributes_for :people, reject_if: proc { |attributes| attributes['name'].blank? && attributes['surname'].blank? }
 
@@ -32,6 +28,20 @@ class Pin < ActiveRecord::Base
 				self.companies << company unless self.companies.include?(company) || company.nil?
 			end
 		end
+	end
+
+	def tag_names=(names)
+		unless names.empty?
+			names.split(',').map(&:strip).map(&:titleize).each do |name|
+				tag = Tag.where('lower(name) = ?', name.downcase).first_or_create(name: name)
+				binding.pry
+				self.tags << tag unless self.tags.include?(tag) 
+			end
+		end
+	end
+
+	def tag_names
+		
 	end
 
 	# def people_attributes=(attributes)

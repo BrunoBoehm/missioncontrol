@@ -57,6 +57,7 @@ class PinsController < ApplicationController
 		end
 
 		def pin_params
-			params.require(:pin).permit(:title, :url, :notes, :imgs, board_ids: [], tag_ids: [], tags_attributes: [:name], companies_attributes: [:name, :id, :_destroy], people_attributes: [:name, :surname])
+			params.require(:pin).permit(:title, :url, :notes, :imgs, { tag_ids: [] }, :tag_names, board_ids: [], companies_attributes: [:name, :id, :_destroy], people_attributes: [:name, :surname])
+			# make sure to have tag_ids called before tag_names otherwise tag names will be destroyed
 		end
 end
