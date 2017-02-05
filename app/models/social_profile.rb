@@ -1,4 +1,3 @@
 class SocialProfile < ActiveRecord::Base
-	belongs_to :person
-	belongs_to :company
+	belongs_to :profilable, polymorphic: true
 end

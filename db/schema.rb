@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201103322) do
+ActiveRecord::Schema.define(version: 20170205160815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,14 +111,16 @@ ActiveRecord::Schema.define(version: 20170201103322) do
     t.string   "ig_url"
     t.string   "yt_url"
     t.string   "db_url"
-    t.integer  "person_id"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "profilable_id"
+    t.string   "profilable_type"
+    t.string   "site_url"
+    t.string   "blog_url"
+    t.string   "med_url"
   end
 
-  add_index "social_profiles", ["company_id"], name: "index_social_profiles_on_company_id", using: :btree
-  add_index "social_profiles", ["person_id"], name: "index_social_profiles_on_person_id", using: :btree
+  add_index "social_profiles", ["profilable_id", "profilable_type"], name: "index_social_profiles_on_profilable_id_and_profilable_type", using: :btree
 
   create_table "staffings", force: :cascade do |t|
     t.integer  "person_id"

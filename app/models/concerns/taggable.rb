@@ -1,4 +1,4 @@
-module IsTaggable
+module Taggable
 	extend ActiveSupport::Concern
 
 	included do

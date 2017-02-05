@@ -3,10 +3,10 @@ class Person < ActiveRecord::Base
 	has_many :pins, through: :perso_links
 	has_many :staffings
 	has_many :companies, through: :staffings
-	has_one :social_profile
 
-	include IsTaggable
+	include Taggable
 	# must add in strong params { tag_ids: [] }, :tag_names	
+	include Profilable
 
 	default_scope { where(account_id: Account.current_id) }
 

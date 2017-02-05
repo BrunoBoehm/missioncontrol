@@ -8,7 +8,7 @@ class Pin < ActiveRecord::Base
 	has_many :pro_links, dependent: :delete_all
 	has_many :companies, through: :pro_links
 
-	include IsTaggable
+	include Taggable
 
 	accepts_nested_attributes_for :people, reject_if: proc { |attributes| attributes['name'].blank? && attributes['surname'].blank? }, allow_destroy: true
 
