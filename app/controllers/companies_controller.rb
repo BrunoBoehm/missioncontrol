@@ -10,7 +10,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def edit
-		@social_profile = @company.social_profiles.build
+		@social_profile = @company.social_profiles.build if @company.social_profiles.length == 0
 	end
 
 	def update
