@@ -29,6 +29,6 @@ class CompaniesController < ApplicationController
 		end
 
 		def company_params
-			params.require(:company).permit(:name, :pitch, :size, :address, :creation_date, { tag_ids: [] }, :tag_names, social_profiles_attributes: [:fb_url, :tw_url, :ln_url, :ig_url, :yt_url, :db_url, :med_url, :site_url, :blog_url])
+			params.require(:company).permit(:name, :pitch, :size, :address, :creation_date, :logo, { tag_ids: [] }, :tag_names, social_profiles_attributes: [:fb_url, :tw_url, :ln_url, :ig_url, :yt_url, :db_url, :med_url, :site_url, :blog_url])
 		end
 end

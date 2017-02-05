@@ -1,8 +1,12 @@
 <div class="container">
-	<h2><%= @company.name %></h2>
 	<div class="row">
 		<div class="col-md-8">
-			<h4>General info</h4>
+			<div class="row">
+				<div class="col-md-3">
+					<%= image_tag(@company.logo, class: "thumbnail") if @company.logo %>
+				</div>	
+			</div>
+			<h4><%= @company.name %></h4>
 			<p>
 				<% @company.tag_names.each do |tag| %>
 					<span class="label label-info"><%= tag %></span>
@@ -15,15 +19,14 @@
 		</div>
 
 		<div class="col-md-4">
-			<h4>Social Profiles</h4>
 			<ul class="list-group">
-				<li class="list-group-item"><a href="<%= facebook_url(@social_profile.fb_url) %>"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a><span class="badge">@<%= @social_profile.fb_url %></span></li>
-				<li class="list-group-item"><a href="<%= twitter_url(@social_profile.tw_url) %>"><i class="fa fa-twitter" aria-hidden="true"></i> twitter</a><span class="badge">@<%= @social_profile.tw_url %></span></li>
-				<li class="list-group-item"><a href="<%= linkedin_url(@social_profile.ln_url) %>"><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a><span class="badge">@<%= @social_profile.ln_url %></span></li>
-				<li class="list-group-item"><a href="<%= instagram_url(@social_profile.ig_url) %>"><i class="fa fa-instagram" aria-hidden="true"></i> instagram</a><span class="badge">@<%= @social_profile.ig_url %></span></li>
-				<li class="list-group-item"><a href="<%= youtube_url(@social_profile.yt_url) %>"><i class="fa fa-youtube" aria-hidden="true"></i> youtube</a><span class="badge">@<%= @social_profile.yt_url %></span></li>
-				<li class="list-group-item"><a href="<%= dribbble_url(@social_profile.db_url) %>"><i class="fa fa-dribbble" aria-hidden="true"></i> dribbble</a><span class="badge">@<%= @social_profile.db_url %></span></li>
-				<li class="list-group-item"><a href="<%= medium_url(@social_profile.med_url) %>"><i class="fa fa-medium" aria-hidden="true"></i> medium</a><span class="badge"><%= @social_profile.med_url %></span></li>
+				<li class="list-group-item"><a href="<%= facebook_url(@social_profile.fb_url) %>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a><span class="badge">@<%= @social_profile.fb_url %></span></li>
+				<li class="list-group-item"><a href="<%= twitter_url(@social_profile.tw_url) %>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> twitter</a><span class="badge">@<%= @social_profile.tw_url %></span></li>
+				<li class="list-group-item"><a href="<%= linkedin_url(@social_profile.ln_url) %>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a><span class="badge">@<%= @social_profile.ln_url %></span></li>
+				<li class="list-group-item"><a href="<%= instagram_url(@social_profile.ig_url) %>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i> instagram</a><span class="badge">@<%= @social_profile.ig_url %></span></li>
+				<li class="list-group-item"><a href="<%= youtube_url(@social_profile.yt_url) %>" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i> youtube</a><span class="badge">@<%= @social_profile.yt_url %></span></li>
+				<li class="list-group-item"><a href="<%= dribbble_url(@social_profile.db_url) %>" target="_blank"><i class="fa fa-dribbble" aria-hidden="true"></i> dribbble</a><span class="badge">@<%= @social_profile.db_url %></span></li>
+				<li class="list-group-item"><a href="<%= medium_url(@social_profile.med_url) %>" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i> medium</a><span class="badge"><%= @social_profile.med_url %></span></li>
 			</ul>
 		</div>
 	</div>
