@@ -26,7 +26,9 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="<%= account_path(current_account) %>"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> <%= current_account.name %>'s Account</a></li>
+                <% if current_account %>
+                  <li><a href="<%= account_path(current_account) %>"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> <%= current_account.name %>'s Account</a></li>
+                <% end %>
                 <li><a href="<%= edit_user_registration_path %>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.name %>'s Account</a></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

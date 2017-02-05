@@ -117,11 +117,6 @@ a:hover {
 }
 
 .fields_list {
-  .input-group, .row {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  }
-  
   fieldset {
     margin: 20px 0;
   }
@@ -131,4 +126,13 @@ a:hover {
       margin: 0;
     }
   }
+}
+
+.well {
+  .row {
+    margin-bottom: 30px;
+  }
+  .input-group {
+    margin: 10px 0;
+  } 
 }
