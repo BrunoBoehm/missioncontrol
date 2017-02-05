@@ -13,6 +13,9 @@
 	</div>	
 	<div class="well">
 		<%= render partial: "shared/add_tags", locals: {f: f} %>
+		<%= f.fields_for :social_profiles do |ff| %>
+			<%= render partial: 'shared/add_social_profile', locals: {f: ff} %>
+		<% end %>		
 	</div>
 	<div class="action">
 		<%= f.submit "Save Person", class: "btn btn-success" %>

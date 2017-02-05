@@ -6,11 +6,11 @@ class PeopleController < ApplicationController
 	end
 
 	def show
-		
+		@social_profile = @person.social_profiles.first
 	end
 
 	def edit
-		
+		@social_profile = @person.social_profiles.build if @person.social_profiles.length == 0
 	end
 
 	def update
@@ -32,6 +32,6 @@ class PeopleController < ApplicationController
 		end
 
 		def person_params
-			params.require(:person).permit(:name, :surname, :img, { tag_ids: [] }, :tag_names)
+			params.require(:person).permit(:name, :surname, :img, { tag_ids: [] }, :tag_names, social_profiles_attributes: [:fb_url, :tw_url, :ln_url, :ig_url, :yt_url, :db_url, :med_url, :site_url, :blog_url])
 		end
 end

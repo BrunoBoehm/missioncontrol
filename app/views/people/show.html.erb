@@ -1,20 +1,26 @@
 <div class="container">
-	<% if !@person.img.nil? %>
-		<div class="row">
-			<div class="col-md-3">
-				<%= image_tag(@person.img, class: "thumbnail") %>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-3">
+					<%= image_tag(@person.img, class: "thumbnail") if !@person.img.empty? %>
+				</div>
 			</div>
-		</div>
-	<% end %>
 
-	<h2><%= @person.name + " " + @person.surname %></h2>
-	<p>Tags: <%= @person.tags.map(&:name).to_sentence %></p>
-	<p><%= @person.name + " " + @person.surname %> is linked to:</p>
-	<ul>
-		<% @person.pins.each do |pin| %>
-			<li><%= link_to pin.title, pin %></li>
-		<% end %>
-	</ul>
+			<h2><%= @person.name + " " + @person.surname %></h2>
+			<p>Tags: <%= @person.tags.map(&:name).to_sentence %></p>
+			<p><%= @person.name + " " + @person.surname %> is linked to:</p>
+			<ul>
+				<% @person.pins.each do |pin| %>
+					<li><%= link_to pin.title, pin %></li>
+				<% end %>
+			</ul>			
+		</div>
+		<div class="col-md-4">
+			<%= render partial: "shared/social_profile", locals: {social_profile: @social_profile} %>
+		</div>
+	</div>
+
 	<hr>
 	<%= link_to "Edit", edit_person_path(@person), class: 'btn btn-default' %>
 	<%= link_to "Delete", @person, method: :delete, class: "btn btn-danger pull-right" %>
