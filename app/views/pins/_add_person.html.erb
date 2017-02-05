@@ -1,12 +1,24 @@
 <fieldset>
 	<div class="input-group">
 		<%= f.label :name, class: "input-group-addon" %>
-		<%= f.text_field :name, class: "form-control" %>
+		<%= f.text_field :name, class: "form-control", list: "name_autocomplete" %>
+		<datalist id="name_autocomplete">
+			<% Person.all.each do |person| %>
+				<option value="<%= person.name %>">
+			<% end %>
+		</datalist>
 	</div>		
+
 	<div class="input-group">	
 		<%= f.label :surname, class: "input-group-addon" %>
-		<%= f.text_field :surname, class: "form-control" %>
+		<%= f.text_field :surname, class: "form-control", list: "surname_autocomplete" %>
+		<datalist id="surname_autocomplete">
+			<% Person.all.each do |person| %>
+				<option value="<%= person.surname %>">
+			<% end %>
+		</datalist>		
 	</div>
+
 	<%= f.hidden_field :_destroy %>
 	<%= link_to "Remove", '#', class: "remove_field" %>		
 </fieldset>	
