@@ -63,8 +63,17 @@ thead {
     min-height: 380px;
     position: relative;
 
-    h4 {
-		height: 40px;
+    .blurb-content {
+    margin: 0 10px 10px;
+    }
+
+    .label {
+      line-height: 2;
+    }
+
+    h5 {
+      height: 20px;
+      overflow: hidden;
     }
 }
 

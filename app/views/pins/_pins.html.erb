@@ -7,16 +7,19 @@
           <% else %>
               <%= link_to image_tag( images(pin).first, class: "img-blurb" ), pin %>
           <% end %>
-          <h4><%= link_to (truncate pin.title), pin %></h4>
+          <div class="blurb-content">
+            <h4><%= link_to (truncate pin.title), pin %></h4>
 
-          <h5>
-            <% pin.tags.take(3).each do |tag| %>
-              <span class="label label-info"><%= link_to "##{tag.name}", tag %></span>
+            <% unless pin.tags.empty? %>
+              <h5>
+                <% pin.tags.take(3).each do |tag| %>
+                  <span class="label label-info"><%= link_to "##{tag.name}", tag %></span>
+                <% end %>
+              </h5>
             <% end %>
-          </h5>
-          
-          <p><%= truncate pin.notes.html_safe, length: 100 %></p>
-       
+            
+            <p><%= truncate(clean(pin.notes).html_safe, length: 80) %></p>
+          </div>
           <p class="blurb-footer"><%= link_to "View pin", pin %></p>
         </div>
     </div>
