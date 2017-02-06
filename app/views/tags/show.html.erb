@@ -2,10 +2,5 @@
 	<h2>Tagged "<%= @tag.name %>"</h2>
 	<h3>Pins</h3>
 	<%= render partial: 'pins/pins', locals: {pins: @tag.pins } %>
-
-	<h3>Boards</h3>
-	<p>Partial of boards with tag "<%= @tag.name %>"</p>
-
-	<h3>Companies</h3>
-	<p>Partial of Companies with tag "<%= @tag.name %>"</p>	
+	<%= render partial: 'shared/stats_pins', locals: {pins: @tag.pins } %>
 </div>

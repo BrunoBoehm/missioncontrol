@@ -18,17 +18,17 @@
 
 	<div class="input-group">
 	    <%= f.label :url, class: "input-group-addon" %>
-	    <%= f.text_field :url, class: "form-control", placeholder: "What's the URL you'd like to pin" %>
+	    <%= f.text_field :url, class: "form-control", placeholder: "What's the URL you'd like to pin (site, vimeo, youtube)?" %>
 	</div>
 
 	<div class="input-group">
 	    <%= f.label :imgs, class: "input-group-addon" %>
-	    <%= f.text_area :imgs, class: "form-control", placeholder: "What's the URL you'd like to pin", rows: "3" %>
+	    <%= f.text_area :imgs, class: "form-control", placeholder: "Images you'd like to pin, 1 url per line", rows: "3" %>
 	</div>	
 
 	<div class="input-group">
 	    <%= f.label :notes, class: "input-group-addon" %>
-	    <%= f.text_area :notes, class: "form-control editor", placeholder: "What's the URL you'd like to pin", rows: "10" %>
+	    <%= f.text_area :notes, class: "form-control editor", placeholder: "Your notes about this pin", rows: "10" %>
 	</div>	
 
 	<div class="well">

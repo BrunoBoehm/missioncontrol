@@ -5,9 +5,10 @@
 </div>
 
 <%= render partial: "pins/pins", locals: {pins: @board.pins} %>
-
+<p><%= link_to "Create a Pin", new_board_pin_path(@board), class: "btn btn-success" %></p>
 <br>
+<%= render partial: 'shared/stats_pins', locals: {pins: @board.pins } %>
 <hr>
-<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-success" %> or <%= link_to "Create a Pin", new_board_pin_path(@board), class: "btn btn-success" %>
+<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-default" %>
 <%= link_to "Delete Board", @board, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right" %>
 </div>

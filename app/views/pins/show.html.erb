@@ -1,7 +1,7 @@
 <div class="container">
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h2 class="panel-title"><%= @pin.title %><span class="pull-right"><%= link_to "Link", @pin.url unless @pin.url.empty? %></span></h2>
+		<h2 class="panel-title"><%= @pin.title %><span class="pull-right"> <% unless @pin.url.empty? %><i class="fa fa-external-link" aria-hidden="true"></i> <%= link_to "Link", @pin.url %></span><% end %></h2>
 	</div>
 
 	<div class="panel-body">
@@ -9,38 +9,42 @@
 	</div>
 	
 	<ul class="list-group">
-		<li class="list-group-item"><strong>Linked Companies: </strong> 
-			<% @pin.companies.each_with_index do |company, index| %>
-				<%= link_to company.name, company %><%= (index + 2 > @pin.companies.length ) ? "" : ", " %>
-			<% end %> 
-		</li>
-		<li class="list-group-item"><strong>Linked People: </strong>
-			<% @pin.people.each_with_index do |person, index| %>
-				<%= link_to "#{person.name} #{person.surname}", person %><%= (index + 2 > @pin.people.length ) ? "" : ", " %>
-			<% end %> 
-		</li>
+		<% unless @pin.companies.empty? %>
+			<li class="list-group-item"><strong>Linked Companies: </strong> 
+				<% @pin.companies.each_with_index do |company, index| %>
+					<%= link_to company.name, company %><%= (index + 2 > @pin.companies.length ) ? "" : ", " %>
+				<% end %> 
+			</li>
+		<% end %>
+		<% unless @pin.people.empty? %>
+			<li class="list-group-item"><strong>Linked People: </strong>
+				<% @pin.people.each_with_index do |person, index| %>
+					<%= link_to person.name, person %><%= (index + 2 > @pin.people.length ) ? "" : ", " %>
+				<% end %> 
+			</li>
+		<% end %>
 	</ul>		
 
-	<div class="panel-body">
-		<% unless @pin.imgs.empty? %>
+	<% unless @pin.imgs.empty? %>
+		<div class="panel-body">
 			<div class="row">
 				<% images(@pin).each do |img| %>
 					<div class="col-xs-12 col-md-4">
-						<%= link_to img, class: "thumbnail" do %>
+						<%= link_to img, class: "thumbnail", target: "_blank" do %>
 						  <%= image_tag img %>
 						<% end %>
 					</div>
 				<% end %>
 			</div>
-		<% end %>
-	</div>	
+		</div>
+	<% end %>	
 
 	<% if is_video?(@pin.url) %>
 		<div class="embed-responsive embed-responsive-16by9">
-			<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/w2H07DRv2_M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+			<iframe class="embed-responsive-item" src="<%= is_video?(@pin.url) %>" frameborder="0" allowfullscreen></iframe>
 		</div>
 	<% end %>
-
+	
 	<nav aria-label="...">
 		<ul class="pager">
 			<% @pin.tags.each do |tag| %>
@@ -59,6 +63,6 @@
 </div>
 
 
-<%= link_to "Edit Pin", edit_pin_path(@pin), class: "btn btn-success" %>
-<%= link_to "Delete Pin", @pin, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+<%= link_to "Edit Pin", edit_pin_path(@pin), class: "btn btn-default" %>
+<%= link_to "Delete Pin", @pin, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right" %>
 </div>
