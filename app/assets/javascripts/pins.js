@@ -1,10 +1,4 @@
-$(function(){
-	initTinyMCE();
-});
-
-$(window).on('page:load', function() {
-  initTinyMCE();
-});
+$(document).ready(initTinyMCE)
 
 function initTinyMCE() {
 	tinymce.init({ 

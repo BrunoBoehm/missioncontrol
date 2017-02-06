@@ -9,6 +9,6 @@
 <br>
 <%= render partial: 'shared/stats_pins', locals: {pins: @board.pins } %>
 <hr>
-<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-default" %>
+<%= link_to "Edit Board", edit_board_path(@board), class: "btn btn-default", data: { turbolinks: false } %>
 <%= link_to "Delete Board", @board, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right" %>
 </div>

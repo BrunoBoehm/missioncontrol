@@ -36,7 +36,7 @@
           </ul>
           <div class="btn-group navbar-btn navbar-right" role="group" aria-label="...">
             <button type="button" class="btn btn-default "><span class="glyphicon glyphicon-th" aria-hidden="true"></span><%= link_to " New Board", new_board_path %></button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span><%= link_to " New Pin", new_pin_path %></button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span><%= link_to " New Pin", new_pin_path, data: { turbolinks: false } %></button>
           </div>            
         <% else %>
           <div class="btn-group navbar-btn navbar-right" role="group" aria-label="...">

@@ -44,7 +44,7 @@
 			<iframe class="embed-responsive-item" src="<%= is_video?(@pin.url) %>" frameborder="0" allowfullscreen></iframe>
 		</div>
 	<% end %>
-	
+
 	<nav aria-label="...">
 		<ul class="pager">
 			<% @pin.tags.each do |tag| %>
@@ -63,6 +63,6 @@
 </div>
 
 
-<%= link_to "Edit Pin", edit_pin_path(@pin), class: "btn btn-default" %>
+<%= link_to "Edit Pin", edit_pin_path(@pin), class: "btn btn-default", data: { turbolinks: false } %>
 <%= link_to "Delete Pin", @pin, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger pull-right" %>
 </div>
