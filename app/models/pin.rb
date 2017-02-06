@@ -35,8 +35,7 @@ class Pin < ActiveRecord::Base
 				self.perso_links.find_by(person_id: attribute[:id]).destroy
 			else
 				person_name = attribute["name"]
-				person_surname = attribute["surname"]
-				person = Person.where('lower(name) = ? AND lower(surname) = ?', person_name.downcase, person_surname.downcase).first_or_create(name: person_name, surname: person_surname) unless (person_name.empty? && person_surname.empty?)
+				person = Person.where('lower(name) = ?', person_name.downcase).first_or_create(name: person_name) unless (person_name.empty?)
 				self.people << person unless self.people.include?(person) || person.nil?
 			end
 		end

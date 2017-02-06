@@ -10,7 +10,5 @@ class Person < ActiveRecord::Base
 
 	default_scope { where(account_id: Account.current_id) }
 
-	def full_name
-		name + " " + surname
-	end
+
 end

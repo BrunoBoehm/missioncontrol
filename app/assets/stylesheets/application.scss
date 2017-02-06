@@ -141,7 +141,17 @@ a:hover {
   .row {
     margin-bottom: 30px;
   }
+
   .input-group {
     margin: 10px 0;
   } 
+
+  .form-control{
+    overflow: hidden;
+    line-height: 150%;
+  }
+}
+
+.form-control {
+
 }

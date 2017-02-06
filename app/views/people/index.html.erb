@@ -6,7 +6,6 @@
 		<tr>
 			<th>id</th>
 			<th>Name</th>
-			<th>Surname</th>
 			<th>Related Pins</th>
 			<th>Related Pins ids</th>
 			<th>Admin</th>
@@ -17,7 +16,6 @@
 			<tr>
 				<td><%= person.id %></td>
 				<td><%= link_to person.name, person %></td>
-				<td><%= link_to person.surname, person %></td>
 				<td><%= person.pins.map(&:title).to_sentence %></td>
 				<td><%= person.pins.map(&:id).join(', ') %></td>
 				<td><%= link_to "Edit", edit_person_path(person) %> | <%= link_to "Destroy", person, method: :delete, data: {confirm: "Are you sure?"} %></td>

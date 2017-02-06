@@ -9,7 +9,7 @@
 		</datalist>
 	</div>		
 
-	<div class="input-group">	
+<!-- 	<div class="input-group">	
 		<%= f.label :surname, class: "input-group-addon" %>
 		<%= f.text_field :surname, class: "form-control", list: "surname_autocomplete" %>
 		<datalist id="surname_autocomplete">
@@ -17,7 +17,7 @@
 				<option value="<%= person.surname %>">
 			<% end %>
 		</datalist>		
-	</div>
+	</div> -->
 
 	<%= f.hidden_field :_destroy %>
 	<%= link_to "Remove", '#', class: "remove_field" %>		

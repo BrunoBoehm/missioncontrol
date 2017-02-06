@@ -4,3 +4,15 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+namespace :admin do
+	desc "merge the name and surname fields for people"
+	task :merge_name => :environment do
+		people = Person.unscoped
+		people.each do |person|
+			person.name += " #{person.surname}"
+			person.save
+		end
+		puts "#{people.length} people updated"
+	end	
+end
