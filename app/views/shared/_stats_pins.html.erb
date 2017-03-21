@@ -1,8 +1,12 @@
-<div class="well">
-	<h4>Recap</h4>
-	<ul>
-	<% pins.each do |pin| %>
-		<li><%= link_to pin.url %></li>
-	<% end %>
-	</ul>
-</div>
+<% unless pins.map(&:url).all?(&:empty?) %>
+	<div class="well">
+		<h4>Recap</h4>
+		<ul>
+		<% pins.each do |pin| %>
+			<% unless pin.url.blank? %>
+				<li><%= link_to pin.url %></li>
+			<% end %>
+		<% end %>
+		</ul>
+	</div>
+<% end %>
