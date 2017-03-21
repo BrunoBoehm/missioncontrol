@@ -16,6 +16,8 @@ class Pin < ActiveRecord::Base
 
 	default_scope { where(account_id: Account.current_id) }
 
+	validates :title, presence: true
+
 
 	def companies_attributes=(attributes)
 		attributes.each do |i, attribute|
