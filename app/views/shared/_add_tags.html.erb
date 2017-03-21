@@ -1,14 +1,14 @@
 <h4>Add Tag(s)</h4>    
 <div class="row">
     <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |c| %>
-	    <div class="col-lg-2">
+	    <div class="col-md-2">
 	    	<div class="input-group">
 		    	<span class="input-group-addon"><%= c.check_box %></span>
 				<%= c.label(class: "form-control") %>
 			</div>	
 		</div>
     <% end %>
-	<div class="col-lg-8">
+	<div class="col-md-8">
     	<div class="input-group">
     		<%= f.label :tags_names, "Add tags", class: "input-group-addon" %>
     		<%= f.text_field :tag_names, class: "form-control", placeholder: "Comma-separated list of tags", value: "" %>

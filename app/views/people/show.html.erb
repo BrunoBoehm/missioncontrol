@@ -3,18 +3,23 @@
 		<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-3">
-					<%= image_tag(@person.img, class: "thumbnail") unless @person.img.nil? || @person.img.empty? %>
+					<%= image_tag(@person.img, class: "thumbnail") unless @person.img.blank? %>
 				</div>
 			</div>
 
 			<h2><%= @person.name %></h2>
-			<p>Tags: <%= @person.tags.map(&:name).to_sentence %></p>
-			<p><%= @person.name %> is linked to:</p>
-			<ul>
-				<% @person.pins.each do |pin| %>
-					<li><%= link_to pin.title, pin %></li>
-				<% end %>
-			</ul>			
+			<% unless @person.tags.nil? %> 
+				<p>Tags: <%= @person.tags.map(&:name).to_sentence %></p>
+			<% end %>
+
+			<% unless @person.pins.nil? %>
+				<p><%= @person.name %> is linked to:</p>
+				<ul>
+					<% @person.pins.each do |pin| %>
+						<li><%= link_to pin.title, pin %></li>
+					<% end %>
+				</ul>		
+			<% end %>
 		</div>
 		<div class="col-md-4">
 			<%= render partial: "shared/social_profile", locals: {social_profile: @social_profile} %>

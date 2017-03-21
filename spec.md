@@ -8,4 +8,4 @@
 [x] standard user authentication, including signup, login, logout, and passwords. You can use Devise.
 [] authentication system should allow login from some other service. Facebook, twitter, foursquare, github
 [] make use of a nested resource with the appropriate RESTful URLs, your nested resource must provide a form that relates to the parent resource like '/profiles/1/pictures/new'
-[] DRY: Logic present in your controllers should be encapsulated as methods in your models, views should use helper methods and partials
+[x] DRY: Logic present in your controllers should be encapsulated as methods in your models, views should use helper methods and partials

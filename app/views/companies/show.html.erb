@@ -1,21 +1,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+			<% unless @company.logo.nil? %>
 			<div class="row">
 				<div class="col-md-3">
 					<%= image_tag(@company.logo, class: "thumbnail") if !@company.logo.empty? %>
 				</div>	
 			</div>
+			<% end %>
 			<h4><%= @company.name %></h4>
 			<p>
 				<% @company.tag_names.each do |tag| %>
 					<span class="label label-info"><%= tag %></span>
 				<% end %>
 			</p>
-			<p><%= link_to @social_profile.site_url %></p>
-			<p>Created in <%= @company.creation_date %>, around <%= @company.size %> employees.</p>
-			<p><%= @company.pitch %></p>
-			<address><%= @company.address %></address>
+			<p><%= link_to @social_profile.try(:site_url) %></p>
+			<p>Created in <%= @company.try(:creation_date) %>, around <%= @company.try(:size) %> employees.</p>
+			<p><%= @company.try(:pitch) %></p>
+			<address><%= @company.try(:address) %></address>
 		</div>
 
 		<div class="col-md-4">
