@@ -1,5 +1,5 @@
 <div class="row text-center">
-  <% pins.order(:id).each do |pin| %>
+  <% pins.each do |pin| %>
     <div class="col-md-3">
         <div class="blurb">
           <% if is_youtube_video?(pin.url) %>

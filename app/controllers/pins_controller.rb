@@ -6,7 +6,7 @@ class PinsController < ApplicationController
 			tag = Tag.find(params[:tag_id])
 			@pins = tag.pins
 		else
-			@pins = Pin.all
+			@pins = Pin.order(updated_at: :desc)
 		end
 	end
 

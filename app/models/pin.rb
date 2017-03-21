@@ -18,6 +18,9 @@ class Pin < ActiveRecord::Base
 
 	validates :title, presence: true
 
+	def self.latest
+		order(updated_at: :desc)
+	end
 
 	def companies_attributes=(attributes)
 		attributes.each do |i, attribute|
