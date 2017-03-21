@@ -5,4 +5,9 @@ class Board < ActiveRecord::Base
 	# belongs_to :account
 
 	default_scope { where(account_id: Account.current_id) }
+	validates :title, presence: true
+
+	def self.recent
+		order(created_at: :desc).limit(3)
+	end
 end
