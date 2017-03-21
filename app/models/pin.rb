@@ -18,7 +18,7 @@ class Pin < ActiveRecord::Base
 
 	validates :title, presence: true
 
-	def self.latest
+	def self.latests
 		order(updated_at: :desc)
 	end
 

@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
 
 	def show
 		# before action set the @board
-		@pins = @board.pins.latest
+		@pins = @board.pins.latests
 	end
 
 	def create

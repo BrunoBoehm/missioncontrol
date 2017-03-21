@@ -4,9 +4,9 @@ class PinsController < ApplicationController
 	def index
 		if params[:tag]
 			tag = Tag.find(params[:tag_id])
-			@pins = tag.pins
+			@pins = tag.pins.latests
 		else
-			@pins = Pin.order(updated_at: :desc)
+			@pins = Pin.latests
 		end
 	end
 
