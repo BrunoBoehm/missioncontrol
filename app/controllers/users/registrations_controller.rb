@@ -52,6 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     # super(resource)
     new_account_path
+    # this is a custom route !!!!!!
   end
 
   # The path used after sign up for inactive accounts.
