@@ -1,10 +1,13 @@
 <div class="container">
 
-  <h1>Top 3 Boards with most pins</h1>
-  <%= render partial: "boards", locals: {boards: @most_pins} %>
+	<h1>Boards with recent pins</h1>
+	<%= render partial: "boards", locals: {boards: @boards_with_recent_pins} %>
 
-  <h1><%= pluralize(@boards.count, "Board") %></h1>
-  <%= render partial: "boards", locals: {boards: @boards} %>
+	<h1>Top <%= @most_pins.length < 4 ? @most_pins.length : 4 %> Boards with most pins</h1>
+	<%= render partial: "boards", locals: {boards: @most_pins} %>
+
+	<h1><%= pluralize(@boards.count, "Board") %></h1>
+	<%= render partial: "boards", locals: {boards: @boards} %>
 
 </div>
 
