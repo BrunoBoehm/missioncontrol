@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
 
 	def index
 		@boards = Board.order(updated_at: :desc)
+		@most_pins = Board.with_most_pins
 	end
 
 	def new
