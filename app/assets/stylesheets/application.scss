@@ -150,3 +150,9 @@ a:hover {
     line-height: 150%;
   }
 }
+
+/* http://stackoverflow.com/questions/18307376/ruby-on-rails-and-bootstrap-make-field-with-errors-display-horizontal */
+.field_with_errors {
+  @extend .has-error;
+  display: inline-block;
+}
