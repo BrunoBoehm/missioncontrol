@@ -5,7 +5,7 @@
 	</div>
 
 	<%= render partial: "pins/pins", locals: {pins: @pins} %>
-	<p><%= link_to "Create a Pin", new_board_pin_path(@board), class: "btn btn-success" %></p>
+	<p><%= link_to "Create a Pin", new_board_pin_path(@board), class: "btn btn-success", data: { turbolinks: false } %></p>
 	<br>
 
 	<%= render partial: 'shared/stats_pins', locals: {pins: @pins } %>
