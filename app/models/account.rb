@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
 	has_many :users
 	# has_many :boards
+	validates :name, presence: true
 
 	# cattr_accessor :current_id
 	# better than cattr_accessor is the following "thread safe" method:

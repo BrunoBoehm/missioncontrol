@@ -4,14 +4,15 @@ class AccountsController < ApplicationController
 	end
 
 	def create
-		account = Account.new(account_params)
+		@account = Account.new(account_params)
 		user = current_user
-		if account.save
-			user.account_id = account.id
+		if @account.save
+			user.account_id = @account.id
 			user.save
 			redirect_to boards_path
 		else
-			render :new, notice: "Something prevented the account from being saved, try again"
+			flash.now[:alert] = "Upsss: " + @account.errors.full_messages.join(', ')
+			render :new
 		end
 	end
 
@@ -20,12 +21,14 @@ class AccountsController < ApplicationController
 	end
 
 	def update
-		account = Account.find(current_account.id)
-		if account.update(account_params)
+		# instance variable to benefit from view errors if fails
+		@account = Account.find(current_account.id)
+		if @account.update(account_params)
 			redirect_to account, notice: "Account updated!"
 		else
+			flash.now[:alert] = "Upsss: " + @account.errors.full_messages.join(', ')
 			render :edit
-		end	
+		end
 	end
 
 	def show
