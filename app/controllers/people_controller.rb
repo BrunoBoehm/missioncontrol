@@ -10,11 +10,16 @@ class PeopleController < ApplicationController
 	end
 
 	def edit
-		@social_profile = @person.social_profiles.build if @person.social_profiles.length == 0
+		if @person.social_profiles.length == 0
+			@social_profile = @person.social_profiles.build
+		else
+			@social_profile = @person.social_profiles.first
+		end
 	end
 
 	def update
 		if @person.update(person_params)
+			# have to make sure the social_profiles params don't create duplicates
 			redirect_to @person, notice: "Well done"
 		else
 			render :edit, notice: "Couldn't be updated"

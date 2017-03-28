@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="col-md-3">
 					<%= image_tag(@company.logo, class: "thumbnail") if !@company.logo.empty? %>
-				</div>	
+				</div>
 			</div>
 			<% end %>
 			<h4><%= @company.name %></h4>
@@ -14,7 +14,7 @@
 					<span class="label label-info"><%= tag %></span>
 				<% end %>
 			</p>
-			<p><%= link_to @social_profile.try(:site_url) %></p>
+			<p><%= link_to 'website', @social_profile.try(:site_url)  %></p>
 			<p>Created in <%= @company.try(:creation_date) %>, around <%= @company.try(:size) %> employees.</p>
 			<p><%= @company.try(:pitch) %></p>
 			<address><%= @company.try(:address) %></address>

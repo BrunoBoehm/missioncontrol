@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
 	end
 
 	def show
-		# before action set the @board
+		# before action sets the @board
 		@pins = @board.pins.latests
 	end
 
@@ -29,7 +29,7 @@ class BoardsController < ApplicationController
 	end
 
 	def edit
-		
+
 	end
 
 	def update

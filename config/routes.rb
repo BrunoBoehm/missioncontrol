@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :accounts
   devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
-  # eg: describes controllers/users/registrations_controller.rb
+  # "controllers: { registrations: 'users/registrations' ..." describes controllers/users/registrations_controller.rb
   resources :people
   resources :social_profiles
   resources :companies
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   resources :pro_links, only: [:index]
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

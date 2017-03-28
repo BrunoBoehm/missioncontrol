@@ -3,6 +3,8 @@ class Account < ActiveRecord::Base
 	# has_many :boards
 
 	# cattr_accessor :current_id
+	# better than cattr_accessor is the following "thread safe" method:
+	# https://blog.engineyard.com/2011/a-modern-guide-to-threads
 	def self.current_id=(id)
 		Thread.current[:account_id] = id
 	end
